@@ -1,0 +1,419 @@
+{
+  "functions": [
+    {
+      "name": "main",
+      "port_declarations": {
+        "a": {
+          "name": "a",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "b": {
+          "name": "b",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "c": {
+          "name": "c",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "d": {
+          "name": "d",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "e": {
+          "name": "e",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "f": {
+          "name": "f",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "g": {
+          "name": "g",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        },
+        "h": {
+          "name": "h",
+          "direction": "output",
+          "size": {
+            "expr": "1"
+          },
+          "is_signed": {
+            "expr": "False"
+          }
+        }
+      },
+      "body": [
+        {
+          "function": "grover_search",
+          "params": {
+            "num_qubits": {
+              "expr": "8"
+            },
+            "reps": {
+              "expr": "6"
+            }
+          },
+          "function_params": {},
+          "outputs": {
+            "gsq": {
+              "name": "gsq"
+            }
+          },
+          "operands": {
+            "oracle_op": {
+              "body": [
+                {
+                  "function": "ArithmeticOracle",
+                  "function_params": {
+                    "expression": "(a^b) and (c^d) and (c^e^f) and (d^g^h) and (a^e^g) and (b^f^h) and (e+f+g+h==1)",
+                    "definitions": {
+                      "a": {
+                        "size": 1
+                      },
+                      "b": {
+                        "size": 1
+                      },
+                      "c": {
+                        "size": 1
+                      },
+                      "d": {
+                        "size": 1
+                      },
+                      "e": {
+                        "size": 1
+                      },
+                      "f": {
+                        "size": 1
+                      },
+                      "g": {
+                        "size": 1
+                      },
+                      "h": {
+                        "size": 1
+                      }
+                    }
+                  },
+                  "inouts": {
+                    "a": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "0"
+                      },
+                      "end": {
+                        "expr": "1"
+                      }
+                    },
+                    "b": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "1"
+                      },
+                      "end": {
+                        "expr": "2"
+                      }
+                    },
+                    "c": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "2"
+                      },
+                      "end": {
+                        "expr": "3"
+                      }
+                    },
+                    "d": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "3"
+                      },
+                      "end": {
+                        "expr": "4"
+                      }
+                    },
+                    "e": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "4"
+                      },
+                      "end": {
+                        "expr": "5"
+                      }
+                    },
+                    "f": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "5"
+                      },
+                      "end": {
+                        "expr": "6"
+                      }
+                    },
+                    "g": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "6"
+                      },
+                      "end": {
+                        "expr": "7"
+                      }
+                    },
+                    "h": {
+                      "name": "oq",
+                      "start": {
+                        "expr": "7"
+                      },
+                      "end": {
+                        "expr": "8"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "7"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "gsq"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "a"
+            },
+            "out2": {
+              "name": "split0"
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "6"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "split0"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "b"
+            },
+            "out2": {
+              "name": "split1"
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "5"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "split1"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "c"
+            },
+            "out2": {
+              "name": "split2"
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "4"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "split2"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "d"
+            },
+            "out2": {
+              "name": "split3"
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "3"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "split3"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "e"
+            },
+            "out2": {
+              "name": "split4"
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "2"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "split4"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "f"
+            },
+            "out2": {
+              "name": "split5"
+            }
+          }
+        },
+        {
+          "function": "split",
+          "params": {
+            "out1_size": {
+              "expr": "1"
+            },
+            "out2_size": {
+              "expr": "1"
+            }
+          },
+          "function_params": {},
+          "inputs": {
+            "in": {
+              "name": "split5"
+            }
+          },
+          "outputs": {
+            "out1": {
+              "name": "g"
+            },
+            "out2": {
+              "name": "h"
+            }
+          }
+        }
+      ],
+      "local_handles": [
+        {
+          "name": "gsq"
+        },
+        {
+          "name": "split0"
+        },
+        {
+          "name": "split1"
+        },
+        {
+          "name": "split2"
+        },
+        {
+          "name": "split3"
+        },
+        {
+          "name": "split4"
+        },
+        {
+          "name": "split5"
+        }
+      ]
+    }
+  ],
+  "classical_execution_code": "\nresult = sample()\nsave({'result': result})\n"
+}
